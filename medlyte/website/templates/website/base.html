@@ -1,0 +1,21 @@
+{% load staticfiles %}
+
+{% include 'website/head.html' %}
+
+{% block head_scripts %} {% endblock %}
+
+</head>
+{% block nativecss %}{% endblock %}
+<body>
+
+{% include 'website/nav.html' %}
+
+{% block content %}{% endblock %}
+
+{% include 'website/footer.html' %}
+
+{% include 'website/body-scripts.html' %}
+
+{% block body_scripts %}{% endblock %}
+</body>
+</html>
