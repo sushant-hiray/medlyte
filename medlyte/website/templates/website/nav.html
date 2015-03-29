@@ -15,10 +15,10 @@
       </div>
       <div class="navbar-collapse collapse navbar-right">
         <ul class="nav navbar-nav">
-          <li class="active"><a href="">HOME</a></li>
+          <li class="active"><a href="{% url 'website.views.index' %}">HOME</a></li>
           <li><a href="providers.html">for HEALTH CARE PROVIDERS</a></li>
           <li><a href="seekers.html">for PATIENTS</a></li>
-          <li><a href="contact.html" style="color:#e7a53a"><i class="fa fa-unlock"></i>&nbsp; Health  Care  Provider  Login</a></li> 
+          <li><a href="{% url 'website.views.create' %}" style="color:#e7a53a"><i class="fa fa-unlock"></i>&nbsp; Health  Care  Provider  Login</a></li> 
         </ul>
       </div><!--/.nav-collapse -->
     </div>
