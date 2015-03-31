@@ -15,5 +15,5 @@ urlpatterns = patterns('',
     url(r'^member/$', 'medlyte.views.member_index', name='user_home'),
     url(r'^member/action$', 'medlyte.views.member_action', name='user_action'),
 
-    url(r'^$', include('website.urls')),
+    url(r'^', include('website.urls')),
 )
