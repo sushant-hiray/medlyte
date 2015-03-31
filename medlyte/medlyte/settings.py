@@ -37,6 +37,15 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'website',
+
+    'django.contrib.sites',
+    'bootstrap3',
+
+    'allauth',
+    'allauth.account',
+
+
+    'provider_auth',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -82,3 +91,44 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Authentication
+
+AUTHENTICATION_BACKENDS = (
+    "allauth.account.auth_backends.AuthenticationBackend",
+)
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.contrib.auth.context_processors.auth",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.media",
+    "django.core.context_processors.static",
+    "django.core.context_processors.request",
+    "django.contrib.messages.context_processors.messages",
+    "allauth.account.context_processors.account",
+    "allauth.socialaccount.context_processors.socialaccount",
+)
+
+TEMPLATE_LOADERS = ('django.template.loaders.filesystem.Loader',
+ 'django.template.loaders.app_directories.Loader')
+
+TEMPLATE_DIRS = (os.path.join(BASE_DIR, 'templates'),)
+
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+SITE_ID = 1
+AUTH_USER_MODEL = 'provider_auth.DemoUser'
+LOGIN_REDIRECT_URL = '/member/'
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_MIN_LENGTH = 3
+# ACCOUNT_EMAIL_VERIFICATION = 'none'  # testing...
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+SOCIALACCOUNT_AUTO_SIGNUP = False  # require social accounts to use the signup form ... I think
+# For custom sign-up form:
+# http://stackoverflow.com/questions/12303478/how-to-customize-user-profile-when-using-django-allauth
+
